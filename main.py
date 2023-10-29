@@ -16,12 +16,13 @@ mysql = MySQL(app)
 
 app.secret_key = 'flukkiez-secretkey'
 
-with open('my_project.json','r') as json_file:
+with open('my_project.json', 'r') as json_file:
     items = json.load(json_file)
+
 
 @app.route('/')
 def first_page():
-    return render_template('html/index.html',items=items)
+    return render_template('html/index.html', items=items)
 
 
 @app.route('/home')
@@ -29,7 +30,6 @@ def home():
     # Check if the user is logged in
     if 'loggedin' in session:
         # User is loggedin show them the home page
-        
 
         return render_template('html/index.html',
                                username=session['username'],

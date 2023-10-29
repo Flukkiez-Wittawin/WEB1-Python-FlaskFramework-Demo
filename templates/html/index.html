@@ -1,162 +1,163 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HOMEPAGE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
 
-<head>
-        <meta charset="utf-8" />
-        <title>HOMEPAGE</title>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-                crossorigin="anonymous" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"></script>
-</head>
-
-<body class="loggedin">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                        <a class="navbar-brand" href="{{ url_for('home')}}">FlukKieZ</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
-                                aria-expanded="false" aria-label="Toggle navigation"><span
-                                        class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									{% if session['loggedin'] %}
-                                        <li class="nav-item">
-                                                <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                                <a class="nav-link" href="{{url_for('logout')}}" tabindex="-1"
-                                                        aria-disabled="true">Logout</a>
-                                        </li>
-									{% else%}
-									    <li class="nav-item">
-										    <a class="nav-link active" aria-current="page" href="{{url_for('login')}}">Login</a>
-								        </li>
-								    {% endif %}
-                                </ul>
-                        </div>
-                </div>
-        </nav>
-        
-        <div class="container-xxl">
-                <br>
-                <div class="container imgco" style="color: black; ">
-
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                                <img src="{{url_for('static', filename='banner/flukkie_banner1.gif')}}" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                                <img src="{{url_for('static', filename='banner/flukkie_banner2.gif')}}" class="d-block w-100" alt="...">
-                                        </div>
-                                        <!-- <div class="carousel-item">
-                                                <img src="./flukkie_banner1.gif" class="d-block w-100" alt="...">
-                                        </div> -->
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                </button>
-                        </div>
-                </div>
-                <br>
-                
-                        <br>
-                        <div class="container bg-dark" style="color: white; border-radius: 10px;">
-                                {% if session['loggedin'] %}
-                                <h1>Welcome</h1>
-                                <h2>Name : {{ username }}</h2>
-                                <h2>Email : {{ email }}</h2>
-                                {% else %}
-                                <center>
-                                        <h1> กรุณาล็อกอินก่อน </h1>
-                                        <a href="{{url_for('login')}}" class="btn btn-primary">ล็อกอิน</a>
-                                </center>
-                                {% endif %}
-                        <br>
-                        </div>
-                
-
-                <br>
-
-                <div class="container skill bg-dark">
-                        <h1>MY SKILL :</h1>
-                        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg"
-                                width="44" height="44" alt="JavaScript" /></a><a href="https://www.php.net/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg"
-                                        width="44" height="44" alt="PHP" /></a><a href="https://www.python.org/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg"
-                                        width="44" height="44" alt="Python" /></a><a
-                                href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank"
-                                rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg"
-                                        width="44" height="44" alt="HTML5" /></a><a
-                                href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg"
-                                        width="44" height="44" alt="CSS3" /></a><a href="https://getbootstrap.com/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg"
-                                        width="44" height="44" alt="Bootstrap" /></a><a href="https://nextjs.org/docs"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg"
-                                        width="44" height="44" alt="NextJs" /></a><a href="https://reactjs.org/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg"
-                                        width="44" height="44" alt="React" /></a><a href="https://nodejs.org/en/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg"
-                                        width="44" height="44" alt="NodeJS" /></a><a href="https://www.mysql.com/"
-                                target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg"
-                                        width="44" height="44" alt="MySQL" /></a><a
-                                href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" rel="noreferrer"><img
-                                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flask-colored.svg"
-                                        width="44" height="44" alt="Flask" /></a><a
-                                href="https://www.adobe.com/uk/products/photoshop.html" target="_blank"
-                                rel="noreferrer">
-                                <br><br>
-                                <a href="https://github.com/Flukkiez-Wittawin">
-                                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Flukkiez-Wittawin&langs_count=10&title_color=ffffff&text_color=ffffff&icon_color=0891b2&bg_color=121212&hide_border=true&locale=en&custom_title=Top%20%Languages"
-                                                alt="Top Languages" /></a>
-                                <br>
-                                <br>
-
-                </div>
-
-                <br>
-
-                <div class="container bg-dark" style="border-radius: 10px; color:white;">
-                        <br>
-                        <h1>My Project : </h1><br>
-
-                        <div class="card-groups">
-							{% for item in items %}
-							    <div class="card respon-card">
-							    	<img src="{{ url_for('static', filename=item['img']) }}" style="cursor: pointer;" onclick="alert('{{item['name']}}')" draggable="false" class="card-img-top">
-							    </div>
-						    {% endfor %}
-                        </div>
-
-
-                        <br><br>
-                </div>
-
+  <body class="loggedin">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">FlukKieZ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if session['loggedin'] %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}" tabindex="-1" aria-disabled="true">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('login') }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
         </div>
-		<br><br>
+      </div>
+    </nav>
 
-</body>
+    <div class="container-xxl">
+      <br />
+      <div class="container imgco" style="color: black; ">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename = 'banner/flukkie_banner1.gif') }}" class="d-block w-100" draggable="false" />
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename = 'banner/flukkie_banner2.gif') }}" class="d-block w-100" draggable="false" />
+            </div>
+            <!--  <div class="carousel-item">
+                                                <img src="./flukkie_banner1.gif" class="d-block w-100" alt="...">
+                                        </div>  -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <br />
 
+      <div class="container bg-dark" style="color: white; border-radius: 10px;">
+        <br>
+        {% if session['loggedin'] %}
+          <h1>Welcome</h1>
+          <h2>Name : {{ username }}</h2>
+          <h2>Email : {{ email }}</h2>
+        {% else %}
+          <center>
+            <h1>กรุณาล็อกอินก่อน เพื่อซื้อสินค้า</h1>
+            <a href="{{ url_for('login') }}" class="btn btn-primary">ล็อกอิน</a>
+          </center>
+        {% endif %}
+        <br />
+      </div>
+
+      <br />
+
+      <div class="container bg-dark" style="color: white; border-radius: 10px;">
+        <br />
+        <div class="row">
+          <div class="image_profile col-6">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width:60%; justify-content:center;">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{{ url_for('static', filename = 'profile_me/profile1.jpg') }}" draggable="false" class="d-block w-100" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ url_for('static', filename = 'profile_me/profile2.jpg') }}" draggable="false" class="d-block w-100" />
+                </div>
+              </div>
+              <!--  <button class="carousel-control-prev" type="button"
+                                                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon"
+                                                                aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button"
+                                                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon"
+                                                                aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                </button>  -->
+            </div>
+          </div>
+
+          <div class="profile_name col-6" style="text-align: left;">
+            <h1>PROFILE</h1>
+            <h3>Name : Wittawin Chadasin</h3>
+            <h3>Nickname : FlukKie</h3>
+            <h3>AGE : 18 | BirthDay : 18/09/2005</h3>
+            <h3>KKW 6/3 [ Premium Math ]</h3>
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <br />
+
+      <div class="container skill bg-dark">
+        <br>
+        <h1>MY SKILL :</h1>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="44" height="44" alt="JavaScript" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg" width="44" height="44" alt="PHP" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" width="44" height="44" alt="Python" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="44" height="44" alt="HTML5" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="44" height="44" alt="CSS3" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" width="44" height="44" alt="Bootstrap" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg" width="44" height="44" alt="NextJs" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="44" height="44" alt="React" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="44" height="44" alt="NodeJS" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" width="44" height="44" alt="MySQL" draggable="false"/>
+        <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flask-colored.svg" width="44" height="44" alt="Flask" draggable="false"/>
+        <br /><br />
+        <a href="https://github.com/Flukkiez-Wittawin"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Flukkiez-Wittawin&langs_count=10&title_color=ffffff&text_color=ffffff&icon_color=0891b2&bg_color=121212&hide_border=true&locale=en&custom_title=Top%20%Languages" alt="Top Languages" /></a>
+        <br />
+        <br />
+      </div>
+
+      <br />
+
+      <div class="container bg-dark" style="border-radius: 10px; color:white;">
+        <br />
+        <h1>My Project :</h1><br />
+
+        <div class="card-groups">
+          {% for item in items %}
+            <div class="card respon-card">
+              <img src="{{ url_for('static', filename = item['img']) }}" style="cursor: pointer;" onclick="itemurl('{{item['name']}}', '{{item['link']}}')" draggable="false" class="card-img-top" />
+            </div>
+          {% endfor %}
+        </div>
+
+        <script src="{{ url_for('static', filename = 'website.js') }}"></script>
+
+        <br /><br />
+      </div>
+    </div>
+    <br /><br />
+  </body>
 </html>
