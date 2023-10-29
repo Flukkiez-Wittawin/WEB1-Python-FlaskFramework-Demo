@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Data</title>
+</head>
+<body>
+    <h1>Update Data</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.img.label }}
+            {{ form.img() }}
+        </div>
+        <div>
+            {{ form.name.label }}
+            {{ form.name() }}
+        </div>
+        <div>
+            <button type="submit">Upload</button>
+        </div>
+    </form>
+    <h2>Data</h2>
+    <ul>
+        {% for item in data %}
+            <li>
+                <img src="{{ url_for('static', filename='pictures/' + item['img']) }}" alt="{{ item['name'] }}" width="100">
+                {{ item['name'] }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

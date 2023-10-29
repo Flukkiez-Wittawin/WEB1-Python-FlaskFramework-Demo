@@ -1,0 +1,92 @@
+.loggedin {
+    background-color: #121212;
+}
+
+.respon-card {
+    width: 40%;
+    transition: 1s;
+    border-radius: 10px;
+    margin: 2px 9px;
+
+}
+.card-groups {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+.respon-card img {
+    border-radius: 6px;
+}
+
+.respon-card:hover {
+    transition: 1s;
+    filter: brightness(0.5);
+}
+
+.skill h1 {
+    color: white;
+    font-size: 30px;
+}
+
+.skill {
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+}
+
+.header {
+    padding: 5px 120px;
+    width: 150px;
+    height: 70px;
+    background-color: #236B8E;
+}
+
+.border {
+    padding: 80px 50px;
+    width: 400px;
+    height: 450px;
+    border: 1px solid #236B8E;
+    border-radius: 0px;
+    background-color: #9AC0CD;
+}
+
+.btn {
+    padding: 10px 40px;
+    background-color: #236B8E;
+    color: #FFFFFF;
+    font-style: oblique;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.textbox {
+    padding: 10px 40px;
+    background-color: #236B8E;
+    text-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+::placeholder {
+    color: #FFFFFF;
+    opacity: 1;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.word {
+    color: #FFFFFF;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.bottom {
+    color: #236B8E;
+    font-style: oblique;
+    font-weight: bold;
+}
